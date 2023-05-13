@@ -1,0 +1,2 @@
+const savedata = () => {}
+export {savedata}

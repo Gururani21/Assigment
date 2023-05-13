@@ -11,6 +11,7 @@ module.exports = {
         whiteSecond: '#FAFAFA',
         textPrimary: '#212121',
         grey: '#e6e6e6',
+        grey: '#7A7A7A',
       },
       fontFamily: {
         sans: ['Poppins'],
@@ -22,6 +23,18 @@ module.exports = {
           },
         },
       }),
+      button: {
+        Primary: {
+          bg: 'red',
+          borderColor: 'currentColor',
+          borderWidth: '2px',
+          color: 'currentColor',
+          '&:hover': {
+            backgroundColor: 'currentColor',
+            color: 'white',
+          },
+        },
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
