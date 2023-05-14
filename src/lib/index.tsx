@@ -17,8 +17,8 @@ function Lib() {
         <Button onClick={() => alert('Button 1 is clicked !')} variant="primary" size="sm">
           Info
         </Button>
-        <Input label="Name" placeholder="John Doe" />
-        <Input label="Name" placeholder="John Doe" required={true} />
+        {/* <Input label="Name" placeholder="John Doe" /> */}
+        {/* <Input label="Name" placeholder="John Doe" required={true} /> */}
       </div>
     </div>
   )

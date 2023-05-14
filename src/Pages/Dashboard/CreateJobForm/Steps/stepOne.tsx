@@ -1,44 +1,54 @@
-import React, { Ref } from 'react'
+import React, {Ref} from 'react'
 import {Form, Formik} from 'formik'
 
 import * as Yup from 'yup'
 import Input from '../../../../lib/components/Form/Input'
-export const StepOne =  React.forwardRef((props, ref : Ref<HTMLFormElement>) => {
+import Button from '../../../../lib/components/Button'
+interface StepOneProps {
+  handelNext: (val: JobInfoTypes.stepOne) => void,
+  currentFormData: JobInfoTypes.JobinfoData | null
+}
+export const StepOne = ({handelNext,currentFormData}: StepOneProps) => {
   const validationSchema = Yup.object({
-    // email: Yup.string().required('Email address is required.').email('Must be a valid email.').max(100),
-    // password: Yup.string().required('Password is required'),
+    title: Yup.string().required('Job Title is required.').max(100),
+    companyName: Yup.string().required('Company Name is required.'),
+    industry: Yup.string().required('Industry Name is required.'),
+    location: Yup.string(),
+    remoteType: Yup.string().oneOf(["Remote", "In-Office"]).required(),
   })
+  console.log(currentFormData)
+  const initialValues={
+    title: currentFormData? currentFormData.title:'',
+    companyName: currentFormData?currentFormData.companyName:'',
+    industry: currentFormData? currentFormData.industry :'',
+    location: currentFormData?currentFormData.location: '',
+    remoteType: currentFormData? currentFormData.remoteType: '',
+  }
 
-  const handleSubmit = () => {
-    console.log('Form submitted');
-  };
   return (
     <Formik
       enableReinitialize
-      initialValues={{
-        title: '',
-        companyName: '',
-        industry: '',
-        location: '',
-        remoteType: '',
-      }}
+      initialValues={{...initialValues}}
       validationSchema={validationSchema}
       onSubmit={(value) => {
         console.log(value)
+        handelNext(value)
       }}
-    > 
+    >
       {(formik) => (
-        <Form className="grid gap-6" ref={ref} onSubmit={handleSubmit}  >
-          <Input label="Title" name="title" required />
-          <Input label="Company name" name="companyName" required />
-          <Input label="Industry" name="industry" required />
+        <Form className="grid gap-6">
+          <Input label="Title" name="title" required placeholder="ex. UX UI Designer" />
+          <Input label="Company name" name="companyName" required placeholder="ex. Google" />
+          <Input label="Industry" name="industry" required placeholder="ex. Information Technology " />
           <div className="grid grid-cols-2 gap-8">
-            <Input label="Location" name="location" />
-            <Input label="Remote type" name="remoteType" />
+            <Input label="Location" name="location" placeholder="ex. Chennai" />
+            <Input label="Remote type" name="remoteType" placeholder="ex. In-office" />
           </div>
-          <button className='hidden' type='submit'></button>
+          <div className="flex justify-end">
+            <Button type="submit">Next</Button>
+          </div>
         </Form>
       )}
     </Formik>
   )
-})
+}

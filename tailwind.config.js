@@ -10,7 +10,7 @@ module.exports = {
         white: '#ffffff',
         whiteSecond: '#FAFAFA',
         textPrimary: '#212121',
-        grey: '#e6e6e6',
+        grey1: '#e6e6e6',
         grey: '#7A7A7A',
       },
       fontFamily: {

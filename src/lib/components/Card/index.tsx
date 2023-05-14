@@ -3,7 +3,18 @@ import {CardProps} from './Card'
 import img from '../../../assets/jobimg.svg'
 import Button from '../Button'
 import Typography from '../Typography'
-const Card = () => {
+import { jobService } from '../../../app/services/JobinfoService'
+import { toast } from 'react-hot-toast'
+
+const Card = ({cardData,handelCardDelete,handelEdit}: CardProps) => {
+  const handelDelete = ()=>{
+    jobService.deleteJob(cardData.id).then(()=>{
+      console.log("job Deleted Successfully ")
+      toast.success("Data Deleted Successfully")
+      handelCardDelete()
+    })
+  }
+
   return (
     <div className="bg-white rounded-xl px-6 py-4 pr-4 ">
       <div className="flex gap-4 items-start ">
@@ -12,24 +23,24 @@ const Card = () => {
         <div className="flex-1">
           <div className="flex">
             <div className="">
-              <Typography variant="heading">UX UI Designer</Typography>
+              <Typography variant="heading">{cardData.title}</Typography>
 
-              <Typography variant="body">Great Vibes - Information Technology</Typography>
+              <Typography variant="body">{cardData.companyName} </Typography>
               <Typography variant="body" className="text-grey">
-                Chennai, Tamilnadu, India (In-office)
+                {cardData.location} ({cardData.remoteType})
               </Typography>
             </div>
             <div className="flex justify-end ml-auto h-10 gap-4 ">
-              <Button>Edit</Button>
-              <Button className="bg-red-500">Delete</Button>
+              <Button onClick={()=>handelEdit(cardData)}>Edit</Button>
+              <Button className="bg-red-500 hover:bg-red-600" onClick={handelDelete}>Delete</Button>
             </div>
           </div>
 
           <div className="mt-8">
             <Typography variant="body">Part-Time (9.00 am - 5.00 pm IST)</Typography>
-            <Typography variant="body">Experience (1 - 2 years)</Typography>
-            <Typography variant="body">INR (₹) 30,000 - 60,000 / Month</Typography>
-            <Typography variant="body">51-200 employees</Typography>
+            <Typography variant="body">Experience ({cardData.experienceMin} - {cardData.experienceMax} years)</Typography>
+            <Typography variant="body">INR (₹) {cardData.salaryMin}- {cardData.salaryMax} / Month</Typography>
+            <Typography variant="body">51-200 Employees</Typography>
           </div>
 
           <Button className="mt-4">Apply Now</Button>

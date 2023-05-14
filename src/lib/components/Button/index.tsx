@@ -1,7 +1,7 @@
 import React from 'react'
 import ButtonProps from './Button'
 const Button: React.FC<ButtonProps> = ({children, className, variant = 'primary', size = 'md', ...props}) => {
-  const baseClasses = 'inline-flex items-center justify-center font-medium rounded focus:outline-none transition duration-150 ease-in-out'
+  const baseClasses = 'inline-flex items-center justify-center font-medium rounded-lg shadow-md focus:outline-none transition duration-150 ease-in-out'
 
   const variantClasses = {
     primary: 'text-white bg-primary hover:bg-blue-600 focus:bg-blue-700 active:bg-blue-800',

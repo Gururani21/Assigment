@@ -4,6 +4,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string
   containerClassName?: string
   inputClassName?: string
+  name: string
 }
 
 export {InputProps}
