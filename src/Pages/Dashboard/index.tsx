@@ -24,7 +24,7 @@ function Dashboard() {
       .getJobData()
       .then((res) => {
         setIsLoading(false)
-        console.log(res)
+   
         setJobData(res.data)
       })
       .finally(() => {
@@ -32,11 +32,11 @@ function Dashboard() {
       })
   }
   const handelCardDelete = () => {
-    console.log('first')
+
     setIsDelete(!isDelete)
   }
   const handelEdit = (val: JobInfoTypes.JobinfoData) => {
-    console.log('here', val)
+
     currentFormData = val
     setIsModal(true)
   }

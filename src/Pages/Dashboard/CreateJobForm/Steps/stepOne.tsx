@@ -16,7 +16,7 @@ export const StepOne = ({handelNext, currentFormData}: StepOneProps) => {
     location: Yup.string(),
     remoteType: Yup.string().oneOf(['Remote', 'In-Office']).required(),
   })
-  console.log(currentFormData)
+
   const initialValues = {
     title: currentFormData ? currentFormData.title : '',
     companyName: currentFormData ? currentFormData.companyName : '',
@@ -31,7 +31,7 @@ export const StepOne = ({handelNext, currentFormData}: StepOneProps) => {
       initialValues={{...initialValues}}
       validationSchema={validationSchema}
       onSubmit={(value) => {
-        console.log(value)
+    
         handelNext(value)
       }}
     >

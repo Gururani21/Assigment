@@ -31,7 +31,7 @@ export const StepTwo = ({handelSave, currentFormData}: StepTwoProps) => {
       }}
       validationSchema={validationSchema}
       onSubmit={(value: JobInfoTypes.stepTwo) => {
-        console.log(value)
+  
         handelSave(value)
         // handelNext(value)
       }}

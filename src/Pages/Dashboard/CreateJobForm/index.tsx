@@ -31,7 +31,7 @@ const CreateJobForm = ({handelCloseModal, currentFormData, getJobData}: CreateJo
   const [step, setStep] = useState<'Second' | 'First'>('First')
   const [formData, setFormData] = useState<JobInfoTypes.JobinfoData>(currentFormData ? currentFormData : initialValues)
   const handelNext = (val: JobInfoTypes.stepOne) => {
-    console.log('her')
+
     setFormData({...formData, ...val})
     setStep('Second')
   }

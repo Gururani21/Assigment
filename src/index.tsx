@@ -7,7 +7,7 @@ import App from './app'
 import {Toaster} from 'react-hot-toast'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
-const str = 'fdfgfg'
+
 
 root.render(
   <React.StrictMode>
