@@ -3,7 +3,7 @@ import Card from '../../lib/components/Card'
 
 interface ShowCardsProps {
   jobData: JobInfoTypes.JobinfoData[]
-  handelCardDelete: () => void,
+  handelCardDelete: () => void
   handelEdit: (val: JobInfoTypes.JobinfoData) => void
 }
 
@@ -11,7 +11,7 @@ const ShowCards: React.FC<ShowCardsProps> = ({jobData, handelCardDelete, handelE
   return (
     <div className="grid grid-cols-2 gap-8">
       {jobData.map((data) => (
-        <Card cardData={data} handelCardDelete={handelCardDelete} handelEdit={handelEdit}/>
+        <Card cardData={data} handelCardDelete={handelCardDelete} handelEdit={handelEdit} />
       ))}
     </div>
   )

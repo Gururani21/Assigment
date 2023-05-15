@@ -5,24 +5,24 @@ import * as Yup from 'yup'
 import Input from '../../../../lib/components/Form/Input'
 import Button from '../../../../lib/components/Button'
 interface StepOneProps {
-  handelNext: (val: JobInfoTypes.stepOne) => void,
+  handelNext: (val: JobInfoTypes.stepOne) => void
   currentFormData: JobInfoTypes.JobinfoData | null
 }
-export const StepOne = ({handelNext,currentFormData}: StepOneProps) => {
+export const StepOne = ({handelNext, currentFormData}: StepOneProps) => {
   const validationSchema = Yup.object({
     title: Yup.string().required('Job Title is required.').max(100),
     companyName: Yup.string().required('Company Name is required.'),
     industry: Yup.string().required('Industry Name is required.'),
     location: Yup.string(),
-    remoteType: Yup.string().oneOf(["Remote", "In-Office"]).required(),
+    remoteType: Yup.string().oneOf(['Remote', 'In-Office']).required(),
   })
   console.log(currentFormData)
-  const initialValues={
-    title: currentFormData? currentFormData.title:'',
-    companyName: currentFormData?currentFormData.companyName:'',
-    industry: currentFormData? currentFormData.industry :'',
-    location: currentFormData?currentFormData.location: '',
-    remoteType: currentFormData? currentFormData.remoteType: '',
+  const initialValues = {
+    title: currentFormData ? currentFormData.title : '',
+    companyName: currentFormData ? currentFormData.companyName : '',
+    industry: currentFormData ? currentFormData.industry : '',
+    location: currentFormData ? currentFormData.location : '',
+    remoteType: currentFormData ? currentFormData.remoteType : '',
   }
 
   return (

@@ -20,17 +20,17 @@ const getJobData = (): Promise<AxiosResponse<JobInfoTypes.JobinfoData[]>> => {
 
   return HttpRequest(requestOptions)
 }
-const deleteJob = (id:string): Promise<AxiosResponse<JobInfoTypes.JobinfoData[]>>=>{
-    const requestOptions: HttpRequestType = {
-        url: ServiceConfig.jobinfoEndoPoint+`/${id}`,
-        method: 'DELETE',
-      }
-    
-      return HttpRequest(requestOptions)
+const deleteJob = (id: string): Promise<AxiosResponse<JobInfoTypes.JobinfoData[]>> => {
+  const requestOptions: HttpRequestType = {
+    url: ServiceConfig.jobinfoEndoPoint + `/${id}`,
+    method: 'DELETE',
+  }
+
+  return HttpRequest(requestOptions)
 }
 
 export const jobService = {
   savedata,
   getJobData,
-  deleteJob
+  deleteJob,
 }

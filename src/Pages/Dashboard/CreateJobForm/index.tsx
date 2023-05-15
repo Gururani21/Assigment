@@ -5,7 +5,7 @@ import {StepOne} from './Steps/stepOne'
 import {StepTwo} from './Steps/steptwo'
 import Button from '../../../lib/components/Button'
 import {jobService} from '../../../app/services/JobinfoService'
-import { toast } from 'react-hot-toast'
+import {toast} from 'react-hot-toast'
 
 const initialValues: JobInfoTypes.JobinfoData = {
   title: '',
@@ -23,13 +23,13 @@ const initialValues: JobInfoTypes.JobinfoData = {
   id: 'new',
 }
 interface CreateJobFormProps {
-  handelCloseModal: () => void,
-  currentFormData: JobInfoTypes.JobinfoData | null,
+  handelCloseModal: () => void
+  currentFormData: JobInfoTypes.JobinfoData | null
   getJobData: () => void
 }
-const CreateJobForm = ({handelCloseModal,currentFormData,getJobData}: CreateJobFormProps) => {
+const CreateJobForm = ({handelCloseModal, currentFormData, getJobData}: CreateJobFormProps) => {
   const [step, setStep] = useState<'Second' | 'First'>('First')
-  const [formData, setFormData] = useState<JobInfoTypes.JobinfoData>(currentFormData?currentFormData :initialValues)
+  const [formData, setFormData] = useState<JobInfoTypes.JobinfoData>(currentFormData ? currentFormData : initialValues)
   const handelNext = (val: JobInfoTypes.stepOne) => {
     console.log('her')
     setFormData({...formData, ...val})
@@ -42,7 +42,7 @@ const CreateJobForm = ({handelCloseModal,currentFormData,getJobData}: CreateJobF
     }
     jobService.savedata(data).then((res) => {
       // show toaster
- toast.success("Data Saved Successfully")
+      toast.success('Data Saved Successfully')
       console.log('Data Saved Successfully')
       getJobData()
       handelCloseModal()
@@ -59,7 +59,7 @@ const CreateJobForm = ({handelCloseModal,currentFormData,getJobData}: CreateJobF
       </div>
       <div className="my-4">
         {step === 'First' && <StepOne handelNext={handelNext} currentFormData={currentFormData} />}
-        {step === 'Second' && <StepTwo handelSave={handelSave}  currentFormData={currentFormData}/>}
+        {step === 'Second' && <StepTwo handelSave={handelSave} currentFormData={currentFormData} />}
       </div>
     </div>
   )
